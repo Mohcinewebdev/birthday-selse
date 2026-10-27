@@ -1,0 +1,720 @@
+  :root {
+    --mint: #78D6AD;
+    --mint-light: #a8e8cc;
+    --mint-pale: #e8f9f3;
+    --charcoal: #292929;
+    --yellow: #F0E58A;
+    --cream: #F8F5EC;
+    --cream-dark: #f0ead8;
+    --cream-shadow: rgba(41,41,41,0.06);
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  *, *::before, *::after { box-sizing: inherit; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    background: var(--cream);
+    color: var(--charcoal);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    overflow-x: hidden;
+  }
+
+  body {
+    min-height: 100%;
+  }
+
+  /* ─── GIFT SCREEN ─────────────────────────────────────────────────── */
+  #gift-screen {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: var(--cream);
+    overflow: hidden;
+    padding: 2rem 1.5rem 3rem;
+    transition: opacity 0.6s ease;
+  }
+
+  /* Subtle paper texture */
+  #gift-screen::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(120,214,173,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 80% 20%, rgba(240,229,138,0.07) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  /* Botanical SVG decoration — top-right corner */
+  .botanical-top {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 200px;
+    height: 200px;
+    opacity: 0.18;
+    pointer-events: none;
+  }
+
+  .botanical-bottom {
+    position: absolute;
+    bottom: -10px;
+    left: -10px;
+    width: 160px;
+    height: 160px;
+    opacity: 0.14;
+    pointer-events: none;
+    transform: rotate(180deg);
+  }
+
+  /* ─── LOGO ─────────────────────────────────────────────────────────── */
+  .brand-lockup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    animation: brandIn 0.9s ease both;
+  }
+
+  .gift-date {
+    color: #527c67;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2rem, 6vw, 2.8rem);
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    line-height: 1;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+  }
+
+  .brand-logo-selse {
+    display: block;
+    width: 138px;
+    height: 44px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+  }
+
+  .brand-logo-ilmora {
+    display: block;
+    width: 43px;
+    height: 43px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+  }
+
+  .brand-divider {
+    width: 1px;
+    height: 27px;
+    background: linear-gradient(transparent, rgba(41, 41, 41, 0.24), transparent);
+  }
+
+  @keyframes brandIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── GIFT BOX ──────────────────────────────────────────────────────── */
+  #gift-wrapper {
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    padding: 0;
+    color: inherit;
+    background: transparent;
+    font: inherit;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  #gift-wrapper:focus-visible .gift-box {
+    outline: 2px solid var(--mint);
+    outline-offset: 8px;
+    border-radius: 2px;
+  }
+
+  @keyframes giftFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    40%       { transform: translateY(-8px) rotate(0.5deg); }
+    70%       { transform: translateY(-4px) rotate(-0.3deg); }
+  }
+
+  .gift-box {
+    position: relative;
+    width: 200px;
+    height: 200px;
+  }
+
+  @media (max-width: 400px) {
+    .gift-box { width: 160px; height: 160px; }
+  }
+
+  /* Gift lid and body */
+  .gift-lid, .gift-body {
+    position: absolute;
+    left: 0; right: 0;
+    border-radius: 4px;
+  }
+
+  .gift-body {
+    bottom: 0;
+    height: 120px;
+    background: linear-gradient(160deg, #f5f0e3 0%, #ebe3cc 100%);
+    box-shadow:
+      0 4px 20px rgba(41,41,41,0.12),
+      inset 0 1px 0 rgba(255,255,255,0.6);
+  }
+
+  .gift-lid {
+    top: 0;
+    height: 90px;
+    background: linear-gradient(150deg, #f8f2e2 0%, #e8dfc5 100%);
+    box-shadow:
+      0 2px 12px rgba(41,41,41,0.10),
+      inset 0 1px 0 rgba(255,255,255,0.7);
+    transform-origin: top center;
+    transition: none;
+  }
+
+  /* Ribbon vertical stripe */
+  .ribbon-v {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 22px;
+    top: 0; bottom: 0;
+    background: linear-gradient(90deg, #5ec99a, var(--mint), #5ec99a);
+    opacity: 0.9;
+  }
+
+  .gift-body .ribbon-v { border-radius: 0 0 2px 2px; }
+  .gift-lid .ribbon-v  { border-radius: 2px 2px 0 0; }
+
+  /* Ribbon horizontal stripe */
+  .ribbon-h {
+    position: absolute;
+    left: 0; right: 0;
+    height: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(180deg, #5ec99a, var(--mint), #5ec99a);
+    opacity: 0.9;
+  }
+
+  /* Yellow accent dot on ribbon cross */
+  .ribbon-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--yellow);
+    border-radius: 50%;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.4);
+    z-index: 2;
+  }
+
+  /* Bow */
+  .bow {
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 50px;
+  }
+
+  .bow-loop {
+    position: absolute;
+    width: 32px;
+    height: 28px;
+    background: linear-gradient(135deg, #6dd5a8, var(--mint));
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    box-shadow: inset 0 2px 4px rgba(255,255,255,0.4), 0 1px 4px rgba(41,41,41,0.12);
+  }
+
+  .bow-loop.left {
+    top: 0; left: 0;
+    transform: rotate(-30deg);
+    transform-origin: right center;
+  }
+
+  .bow-loop.right {
+    top: 0; right: 0;
+    transform: rotate(30deg) scaleX(-1);
+    transform-origin: left center;
+  }
+
+  .bow-center {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle, #78D6AD, #5ec99a);
+    border-radius: 50%;
+    top: 8px; left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 1px 3px rgba(41,41,41,0.15);
+    z-index: 2;
+  }
+
+  .gift-tagline {
+    margin-top: 2.5rem;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--charcoal);
+    opacity: 0.75;
+    text-align: center;
+  }
+
+  .gift-cta {
+    margin-top: 0.75rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--mint);
+    text-align: center;
+    opacity: 0.9;
+  }
+
+  /* ─── OPENING ANIMATION ─────────────────────────────────────────────── */
+  @media (prefers-reduced-motion: no-preference) {
+    .gift-box {
+      animation: giftFloat 2.8s ease-in-out infinite;
+    }
+
+    .opening .gift-box {
+      animation: giftOpenBounce 0.55s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+    }
+
+    .opening .gift-lid {
+      animation: lidLift 1.0s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+    }
+    .opening .bow {
+      animation: bowFade 0.4s ease 0.2s forwards;
+    }
+    .opening .ribbon-h {
+      animation: ribbonFade 0.4s ease 0.15s forwards;
+    }
+  }
+
+  @keyframes giftOpenBounce {
+    0% { transform: scale(1); }
+    35% { transform: scale(1.08) translateY(-5px); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes lidLift {
+    0%   { transform: translateY(0) rotateX(0deg); opacity: 1; }
+    60%  { transform: translateY(-80px) rotateX(-40deg); opacity: 0.7; }
+    100% { transform: translateY(-120px) rotateX(-70deg); opacity: 0; }
+  }
+
+  @keyframes bowFade {
+    to { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+  }
+
+  @keyframes ribbonFade {
+    to { opacity: 0; }
+  }
+
+  /* Glow effect */
+  .gift-glow {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 0; height: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(120,214,173,0.4), transparent 70%);
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .gift-glow.active {
+    animation: glowExpand 1.2s ease 0.5s forwards;
+  }
+
+  @keyframes glowExpand {
+    0%   { width: 0; height: 0; opacity: 0; }
+    40%  { opacity: 1; }
+    100% { width: 320px; height: 320px; opacity: 0; }
+  }
+
+  /* Particles */
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  /* Screen fade-out */
+  #gift-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease;
+  }
+
+  /* ─── LETTER SCREEN ─────────────────────────────────────────────────── */
+  #letter-screen {
+    display: none;
+    min-height: 100dvh;
+    padding: 3rem 1.5rem 7rem;
+    background-color: #f3f0e7;
+    background-image:
+      radial-gradient(ellipse at 18% 24%, rgba(255, 255, 255, 0.58), transparent 42%),
+      radial-gradient(ellipse at 80% 56%, rgba(225, 216, 190, 0.2), transparent 45%),
+      repeating-linear-gradient(3deg, rgba(91, 77, 50, 0.018) 0, rgba(91, 77, 50, 0.018) 1px, transparent 1px, transparent 4px);
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  #letter-screen::after {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    left: -8%;
+    bottom: 0;
+    width: 72%;
+    height: 8.5rem;
+    background: linear-gradient(160deg, #78c9a5, #55aa88);
+    clip-path: ellipse(78% 58% at 0% 100%);
+    pointer-events: none;
+  }
+
+  #letter-screen.visible {
+    display: block;
+    animation: screenIn 0.6s ease forwards;
+  }
+
+  @keyframes screenIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* Letter paper */
+  .letter-paper {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 1.8rem 2.5rem 2rem;
+    background: transparent;
+    position: relative;
+    z-index: 1;
+  }
+
+  .letter-botanical {
+    position: absolute;
+    z-index: -1;
+    top: -3rem;
+    right: -5rem;
+    width: clamp(150px, 30vw, 230px);
+    opacity: 0.28;
+    filter: blur(1.2px);
+    pointer-events: none;
+  }
+
+  @media (max-width: 600px) {
+    .letter-paper {
+      padding: 1.5rem 0.25rem 1.5rem;
+    }
+
+    .letter-botanical {
+      top: -1rem;
+      right: -3.5rem;
+      width: 155px;
+      opacity: 0.22;
+    }
+  }
+
+  /* Paper edge detail */
+  .letter-paper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(ellipse at 15% 30%, rgba(255, 255, 255, 0.25), transparent 48%),
+      repeating-linear-gradient(95deg, rgba(84, 69, 43, 0.014) 0, rgba(84, 69, 43, 0.014) 1px, transparent 1px, transparent 5px);
+    pointer-events: none;
+  }
+
+  /* Letter logo */
+  .letter-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .letter-logo .brand-logo-selse {
+    width: 220px;
+    height: 70px;
+  }
+
+  .letter-logo .brand-logo-ilmora {
+    display: none;
+  }
+
+  .letter-logo .brand-divider {
+    display: none;
+  }
+
+  /* Divider */
+  .letter-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -1rem auto 1.5rem;
+    width: 74px;
+  }
+
+  .letter-divider::before,
+  .letter-divider::after {
+    display: none;
+  }
+
+  .divider-diamond {
+    width: 74px;
+    height: 1px;
+    background: rgba(82, 124, 103, 0.65);
+    transform: none;
+  }
+
+  /* Date */
+  .letter-date {
+    text-align: center;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.24em;
+    color: var(--charcoal);
+    opacity: 0.85;
+    margin-bottom: 1.9rem;
+    text-transform: uppercase;
+  }
+
+  .letter-kicker {
+    display: none;
+  }
+
+  /* Body text */
+  .letter-body {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--charcoal);
+    text-align: center;
+  }
+
+  .letter-para {
+    margin-bottom: 1.35rem;
+    opacity: 0;
+  }
+
+  .letter-para.revealed {
+    animation: paraIn 0.7s ease forwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .letter-para,
+    .letter-greeting {
+      opacity: 1 !important;
+      animation: none !important;
+    }
+  }
+
+  @keyframes paraIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .letter-greeting {
+    font-family: 'Dancing Script', 'Palatino Linotype', cursive;
+    font-size: 2.9rem;
+    font-weight: 500;
+    color: #b7a56c;
+    display: block;
+    margin: 0.5rem 0 1.8rem;
+    opacity: 0;
+    filter: none;
+  }
+
+  .letter-greeting.revealed {
+    animation: paraIn 0.9s ease forwards;
+  }
+
+  .letter-closing {
+    font-size: 1.2rem;
+    font-weight: 300;
+    font-style: normal;
+    opacity: 0;
+  }
+
+  .letter-closing.revealed {
+    animation: paraIn 0.7s ease forwards;
+  }
+
+  /* Bottom botanical accent */
+  .letter-bottom-accent {
+    display: flex;
+    justify-content: center;
+    margin: 3rem auto 0;
+    opacity: 0.72;
+    position: relative;
+    z-index: 1;
+  }
+
+  .letter-bottom-accent::before,
+  .letter-bottom-accent::after {
+    content: '';
+    align-self: center;
+    width: 4rem;
+    height: 1px;
+    margin: 0 1rem;
+    background: rgba(82, 124, 103, 0.6);
+  }
+
+  /* Sparkle canvas */
+  #sparkle-canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Read again */
+  .read-again-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    opacity: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .visible .read-again-wrap {
+    animation: paraIn 0.7s ease 3s forwards;
+  }
+
+  .read-again-btn {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    opacity: 1;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid transparent;
+    transition: opacity 0.2s, border-color 0.2s;
+  }
+
+  .read-again-btn:hover,
+  .read-again-btn:focus-visible {
+    opacity: 0.7;
+    border-bottom-color: var(--mint);
+    outline: none;
+  }
+
+  #confetti-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 11;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .confetti-piece {
+    position: absolute;
+    top: var(--confetti-origin-y);
+    left: var(--confetti-origin-x);
+    width: var(--confetti-size);
+    height: calc(var(--confetti-size) * 1.55);
+    border-radius: 2px;
+    background: var(--confetti-color);
+    opacity: 0;
+    animation: confettiBurstAndFall var(--confetti-duration) cubic-bezier(0.22, 0.65, 0.35, 1) var(--confetti-delay) forwards;
+  }
+
+  @keyframes confettiBurstAndFall {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 0, 0) scale(0.25) rotate(0);
+    }
+    8% {
+      opacity: 0.95;
+      transform: translate3d(0, 0, 0) scale(1.1) rotate(45deg);
+    }
+    28% {
+      opacity: 0.95;
+      transform: translate3d(var(--confetti-burst-x), var(--confetti-burst-y), 0) scale(1) rotate(260deg);
+    }
+    100% {
+      opacity: 0;
+      transform: translate3d(
+        calc(var(--confetti-burst-x) + var(--confetti-drift)),
+        calc(var(--confetti-burst-y) + var(--confetti-fall-distance)),
+        0
+      ) scale(0.8) rotate(var(--confetti-rotation));
+    }
+  }
+
+  .confetti-rain-piece {
+    position: absolute;
+    top: -16px;
+    width: var(--confetti-size);
+    height: calc(var(--confetti-size) * 1.55);
+    border-radius: 2px;
+    background: var(--confetti-color);
+    opacity: 0;
+    animation: confettiRainFall var(--confetti-duration) linear forwards;
+  }
+
+  @keyframes confettiRainFall {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, -2vh, 0) rotate(0);
+    }
+    10% { opacity: 0.85; }
+    85% { opacity: 0.75; }
+    100% {
+      opacity: 0;
+      transform: translate3d(var(--confetti-drift), 110vh, 0) rotate(var(--confetti-rotation));
+    }
+  }
+
+  @media (max-width: 400px) {
+    .brand-lockup { margin-bottom: 2rem; }
+    .brand-logo-selse { width: 120px; height: 39px; }
+    .brand-logo-ilmora { width: 38px; height: 38px; }
+    #letter-screen { padding: 1.5rem 1.1rem 6rem; }
+    .letter-logo { margin-bottom: 1.7rem; }
+    .letter-logo .brand-logo-selse { width: 190px; height: 61px; }
+    .letter-body { font-size: 1.22rem; }
+    .letter-greeting { font-size: 2.55rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      scroll-behavior: auto !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday - SELSE</title>
+<meta name="theme-color" content="#f8f5ec">
+<meta name="description" content="A little birthday surprise | 28/10/2026 | Just for you.">
+<link rel="icon" type="image/svg+xml" href="./images/photo_5983588320866407126_x.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Dancing+Script:wght@500&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<!-- ══ GIFT SCREEN ════════════════════════════════════════════════════ -->
+<section id="gift-screen" role="main">
+
+  <!-- Botanicals -->
+  <svg class="botanical-top" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M180 10 Q140 40 150 90 Q160 140 120 160 Q80 180 60 170" stroke="#78D6AD" stroke-width="1.2" fill="none"/>
+    <path d="M170 20 Q155 55 165 80" stroke="#78D6AD" stroke-width="0.8" fill="none"/>
+    <ellipse cx="158" cy="60" rx="14" ry="8" transform="rotate(-30 158 60)" fill="#78D6AD" opacity="0.5"/>
+    <ellipse cx="148" cy="90" rx="16" ry="9" transform="rotate(-55 148 90)" fill="#78D6AD" opacity="0.4"/>
+    <ellipse cx="130" cy="115" rx="18" ry="10" transform="rotate(-70 130 115)" fill="#78D6AD" opacity="0.35"/>
+    <ellipse cx="108" cy="138" rx="15" ry="8" transform="rotate(-80 108 138)" fill="#78D6AD" opacity="0.3"/>
+    <path d="M165 80 Q175 70 170 55" stroke="#78D6AD" stroke-width="0.7" fill="none"/>
+    <ellipse cx="171" cy="56" rx="10" ry="5" transform="rotate(-20 171 56)" fill="#78D6AD" opacity="0.4"/>
+    <circle cx="142" cy="170" r="3" fill="#F0E58A" opacity="0.6"/>
+    <circle cx="175" cy="35" r="2" fill="#F0E58A" opacity="0.5"/>
+  </svg>
+
+  <svg class="botanical-bottom" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M180 10 Q140 40 150 90 Q160 140 120 160 Q80 180 60 170" stroke="#78D6AD" stroke-width="1.2" fill="none"/>
+    <ellipse cx="158" cy="60" rx="14" ry="8" transform="rotate(-30 158 60)" fill="#78D6AD" opacity="0.5"/>
+    <ellipse cx="148" cy="90" rx="16" ry="9" transform="rotate(-55 148 90)" fill="#78D6AD" opacity="0.4"/>
+    <ellipse cx="130" cy="115" rx="18" ry="10" transform="rotate(-70 130 115)" fill="#78D6AD" opacity="0.35"/>
+  </svg>
+
+  <!-- Date -->
+  <div class="brand-lockup gift-date" aria-label="28 October 2026">
+    <span>28/10/2026</span>
+  </div>
+
+  <!-- Gift -->
+  <button id="gift-wrapper" type="button" aria-label="Open your gift">
+    <div class="gift-glow" id="giftGlow"></div>
+
+    <div class="gift-box">
+      <!-- Bow -->
+      <div class="bow">
+        <div class="bow-loop left"></div>
+        <div class="bow-loop right"></div>
+        <div class="bow-center"></div>
+      </div>
+
+      <!-- Lid -->
+      <div class="gift-lid" id="giftLid">
+        <div class="ribbon-v"></div>
+        <div class="ribbon-h">
+          <div class="ribbon-dot"></div>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="gift-body">
+        <div class="ribbon-v"></div>
+      </div>
+    </div>
+  </button>
+
+  <p class="gift-tagline">A little birthday magic, made just for you.</p>
+  <p class="gift-cta">Tap to open your surprise</p>
+</section>
+
+<!-- Sparkle canvas (shared) -->
+<canvas id="sparkle-canvas"></canvas>
+<div id="confetti-layer" aria-hidden="true"></div>
+
+<!-- ══ LETTER SCREEN ═════════════════════════════════════════════════ -->
+<section id="letter-screen" aria-label="Birthday letter">
+
+  <article class="letter-paper">
+    <svg class="letter-botanical" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M190 0C165 35 175 68 148 94C126 115 119 144 91 175" stroke="#527c67" stroke-width="2"/>
+      <path d="M165 37C142 31 130 19 126 2C148 5 163 16 165 37Z" fill="#78D6AD" fill-opacity=".72"/>
+      <path d="M158 65C179 61 193 49 199 31C178 34 163 46 158 65Z" fill="#78D6AD" fill-opacity=".68"/>
+      <path d="M139 94C117 88 104 74 101 57C121 62 136 74 139 94Z" fill="#78D6AD" fill-opacity=".62"/>
+      <path d="M124 122C145 116 159 103 165 85C144 89 130 102 124 122Z" fill="#78D6AD" fill-opacity=".58"/>
+      <path d="M105 151C84 144 72 130 70 112C90 117 103 131 105 151Z" fill="#78D6AD" fill-opacity=".54"/>
+    </svg>
+
+    <!-- Logo -->
+    <div class="letter-logo" aria-label="SELSE and ilmora">
+      <img class="brand-logo-selse" src="./images/selse-icon-light.png" alt="SELSE">
+      <span class="brand-divider" aria-hidden="true"></span>
+      <img class="brand-logo-ilmora" src="./images/ilmora-v1-icon-light.png" alt="ilmora">
+    </div>
+
+    <!-- Divider -->
+    <div class="letter-divider"><div class="divider-diamond"></div></div>
+
+    <!-- Date -->
+    <p class="letter-date">28 October 2026</p>
+    <p class="letter-kicker">A little note for your special day</p>
+
+    <!-- Body -->
+    <div class="letter-body">
+
+      <p class="letter-para" id="p1">
+        I once planned to make this date special<br>
+        with the official launch of SELSE.
+      </p>
+
+      <p class="letter-para" id="p2">
+        Things didn't go as planned<br>
+        but I didn't want to let the day pass without<br>
+        making it in a different way.
+      </p>
+
+      <p class="letter-para" id="p3">
+        It's funny how a project can carry a name that <br>
+        reminds you of someone, and how a date can become meaningful for<br>
+        more than one reason.
+      </p>
+
+      <p class="letter-para" id="p4">
+        So, until SELSE gets its official opening day,<br>
+        here is a little piece of the story<br>
+        I wanted to share with you.
+      </p>
+
+      <span class="letter-greeting" id="greeting">Happy birthday!</span>
+
+      <p class="letter-para letter-closing" id="p5">
+        Wishing you a year filled with happiness,<br>
+        lovely surprises, and beautiful moments.
+      </p>
+
+    </div>
+
+    <!-- Bottom botanical accent -->
+    <div class="letter-bottom-accent">
+      <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 30 Q35 10 60 20 Q85 30 110 10" stroke="#78D6AD" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <ellipse cx="35" cy="16" rx="8" ry="4" transform="rotate(-20 35 16)" fill="#78D6AD" opacity="0.6"/>
+        <ellipse cx="60" cy="19" rx="9" ry="4" transform="rotate(5 60 19)" fill="#78D6AD" opacity="0.5"/>
+        <ellipse cx="85" cy="16" rx="8" ry="4" transform="rotate(20 85 16)" fill="#78D6AD" opacity="0.5"/>
+        <circle cx="60" cy="36" r="2.5" fill="#F0E58A" opacity="0.7"/>
+        <circle cx="20" cy="32" r="1.5" fill="#F0E58A" opacity="0.5"/>
+        <circle cx="100" cy="12" r="1.5" fill="#F0E58A" opacity="0.5"/>
+      </svg>
+    </div>
+
+  </article>
+
+  <!-- Read again -->
+  <div class="read-again-wrap">
+    <button class="read-again-btn" id="read-again" type="button" aria-label="Read the birthday message again">The one you lost in his eyes</button>
+  </div>
+
+</section>
+
+<audio id="birthday-song" autoplay preload="auto" src="./audio/Pistol%20-%20Cigarettes%20After.mp3"></audio>
+<script src="./script.js" defer></script>
+</body>
+</html>
